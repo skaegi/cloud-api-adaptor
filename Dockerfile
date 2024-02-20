@@ -39,4 +39,5 @@ RUN dnf install -y libvirt-libs /usr/bin/ssh && dnf clean all
 
 FROM base-${BUILD_TYPE}
 COPY --from=builder /work/cloud-api-adaptor /work/entrypoint.sh /usr/local/bin/
+COPY --from=builder /work/*.so /providers/
 CMD ["entrypoint.sh"]

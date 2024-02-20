@@ -31,7 +31,7 @@ else
 endif
 
 all: build
-build: $(BINARIES)
+build: $(BINARIES) $(BUILTIN_CLOUD_PROVIDERS)
 
 # The help target prints out all targets with their descriptions organized
 # beneath their categories. The categories are represented by '##@' and the
@@ -76,6 +76,9 @@ endif
 
 $(BINARIES): .git-commit $(SOURCES)
 	$(GOOPTIONS) go build $(GOFLAGS) -o "$@" ./cmd/$@
+
+$(BUILTIN_CLOUD_PROVIDERS): .git-commit $(SOURCES)
+	$(GOOPTIONS) go build $(GOFLAGS) -buildmode=plugin ./pkg/adaptor/cloud/$@
 
 ##@ Development
 
