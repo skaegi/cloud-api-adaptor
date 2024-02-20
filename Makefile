@@ -72,6 +72,7 @@ GOFLAGS += -tags=$(subst $(space),$(comma),$(strip $(BUILTIN_CLOUD_PROVIDERS)))
 
 ifneq (,$(filter libvirt,$(BUILTIN_CLOUD_PROVIDERS)))
 cloud-api-adaptor: GOOPTIONS := $(subst CGO_ENABLED=0,CGO_ENABLED=1,$(GOOPTIONS))
+$(BUILTIN_CLOUD_PROVIDERS): GOOPTIONS := $(subst CGO_ENABLED=0,CGO_ENABLED=1,$(GOOPTIONS))
 endif
 
 $(BINARIES): .git-commit $(SOURCES)
