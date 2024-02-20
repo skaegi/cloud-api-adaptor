@@ -31,7 +31,9 @@ else
 endif
 
 all: build
-build: $(BINARIES) $(BUILTIN_CLOUD_PROVIDERS)
+build: $(BINARIES) providers
+
+providers: $(BUILTIN_CLOUD_PROVIDERS)
 
 # The help target prints out all targets with their descriptions organized
 # beneath their categories. The categories are represented by '##@' and the
